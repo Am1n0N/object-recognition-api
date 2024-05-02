@@ -5,10 +5,6 @@ import cv2
 import io
 import numpy as np
 
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 app = Flask(__name__)
 
@@ -44,6 +40,6 @@ def process_image():
     # Return the processed image
     return send_file(io.BytesIO(output_image), mimetype='image/jpeg')
 
-port = int(os.getenv('PORT'))
+
 if __name__ == "__main__": 
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run()
