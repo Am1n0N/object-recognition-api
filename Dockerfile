@@ -16,8 +16,7 @@ RUN pip install opencv-python-headless
 COPY . .
 
 # Expose the port on which the Flask app will run
-EXPOSE 5000
-
+EXPOSE 8080
 
 # Run the Flask app when the container starts
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--host=0.0.0.0", "-p", "8080"]
