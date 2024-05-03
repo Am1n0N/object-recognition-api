@@ -1,12 +1,14 @@
 from flask import Flask, request, send_file
+app = Flask(__name__)
 import os
 from ultralytics import YOLO
 import cv2
 import io
 import numpy as np
 
+from dotenv import load_dotenv
+load_dotenv()
 
-app = Flask(__name__)
 
 @app.route('/process_image', methods=['POST'])
 def process_image():
@@ -42,4 +44,5 @@ def process_image():
 
 
 if __name__ == "__main__": 
-    app.run()
+    PORT = os.getenv('PORT', 8080)
+    app.run(debug=True,host='0.0.0.0', port=PORT)
